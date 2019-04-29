@@ -1,0 +1,67 @@
+/*requisitos para cadastro
+***nao pode ter codigos iguais
+Valores que sao obrigatorios 
+****Codigo e nome
+****verificar se tem posição disponivel pra cadastro
+*/
+import java.lang.reflect.Array;
+
+import javax.swing.JOptionPane;
+public class TrabalhoEmSala {
+	
+	static int TAM = 4;
+	static byte i = 0; 
+	public static int codigo[] = new int[TAM];
+	public static int x ;
+	public static String nome[] = new String [TAM];
+	public static String email[] = new String [TAM];
+	public static String cidade[] = new String [TAM];
+	public static String uf[] = new String [TAM];
+	
+	JOptionPane entrada = new JOptionPane();
+	public static void main(String[] args) {
+		
+		int opcao ;
+		for (int i = 0; i <  TAM ; i ++){
+			opcao = Integer.parseInt( JOptionPane.showInputDialog("ESCOLHA UMA DAS OPCÕES ABAIXO.\n1-Cadastrar \n2-Consultar"));//\n3-Atualizar\n4-Excluir\n5-Listar\n6-Sair\n");
+			
+			switch (opcao){
+			case 1 :
+				cadastrar();
+				break;
+			case 2 : 
+				consultar();
+				break;
+			default :
+				mensagem();
+			}
+		}
+	}
+	public static void codigo(){
+		if (codigo[i] == codigo[i--])
+			System.out.println("Codigo invalido ou repetido ! ");
+		else 
+			cadastrar();
+	}
+	
+	public static void mensagem(){
+		JOptionPane.showMessageDialog(null, "Opcão invalida ! ");
+		
+	}
+	public static void cadastrar(){
+		nome[i] = JOptionPane.showInputDialog("Digite o nome : ");
+		codigo[i] = Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo : "));
+		JOptionPane.showMessageDialog(null,"Cadatro realizado com sucesso !");
+		}
+
+	public static void consultar(){
+		codigo[i]= Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo que deseja buscar:"));
+		if (codigo[i] == codigo[i]){
+			JOptionPane.showMessageDialog(null,"Nome: " + nome[i] + "\nCodigo: " + codigo[i] );
+			}
+		else {
+			JOptionPane.showMessageDialog(null, "Codigo inexistente !");
+		}
+		
+	}
+}
